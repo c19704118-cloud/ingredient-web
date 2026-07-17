@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 页面背景：中心深粉向外渐变变白 + 细碎星光白点 */
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle, #f4b8cc 0%, #fff8fb 70%, #ffffff 100%);
+    font-family: "微软雅黑", sans-serif;
+    position: relative;
+    overflow-x: hidden;
+}
+/* 细碎星光小点，还原图片质感 */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#ffffff 1px, transparent 1px);
+    background-size: 25px 25px;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 爱心、星星漂浮装饰样式（保留不变） */
+.deco {
+    position: fixed;
+    color: #ffc8dd;
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 0;
+}
+.heart1 { top: 12%; left: 8%; font-size: 32px; }
+.heart2 { top: 60%; right: 6%; font-size: 26px; }
+.heart3 { bottom: 15%; left: 12%; font-size: 22px; }
+.star1 { top: 25%; right: 10%; font-size: 28px; }
+.star2 { top: 75%; left: 5%; font-size: 24px; }
+.star3 { bottom: 30%; right: 15%; font-size: 20px; }
+
+/* 中间白色工具主框架【完全不变，不改动】 */
+.main-box {
+    position: relative;
+    z-index: 1;
+    width: 620px;
+    margin: 70px auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 22px;
+    box-shadow: 0 4px 20px #c9789e80;
+}
+
+h1 {
+    color: #c25c88;
+    text-align: center;
+    margin-bottom: 32px;
+    font-size: 26px;
+}
+h2 {
+    color: #c25c88;
+    margin-bottom: 16px;
+}
+h3 {
+    color: #b04e77;
+    margin-bottom: 8px;
+}
+
+.input-item {
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555555;
+    font-size: 15px;
+}
+textarea, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #f0b8d0;
+    border-radius: 12px;
+    font-size: 14px;
+    background: #fff7fb;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(#e278a5, #f09fc3);
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.submit-btn:hover {
+    background: linear-gradient(#d16492, #e88eb7);
+}
+
+.result-area {
+    margin-top: 35px;
+    border-top: 1px solid #f2c8dd;
+    padding-top: 25px;
+}
+.item-card {
+    background: linear-gradient(#ffe6ef, #fff0f7);
+    padding: 18px;
+    border-radius: 14px;
+    margin-bottom: 14px;
+}
+.warn {
+    margin-top: 8px;
+    color: #c83c6c;
+    font-weight: 500;
+}

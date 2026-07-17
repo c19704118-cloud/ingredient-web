@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>护肤品成分分析工具</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- 漂浮爱心星星装饰 -->
+    <div class="deco heart1">❤</div>
+    <div class="deco heart2">❤</div>
+    <div class="deco heart3">❤</div>
+    <div class="deco star1">✦</div>
+    <div class="deco star2">✦</div>
+    <div class="deco star3">✦</div>
+
+    <div class="main-box">
+        <h1>护肤品成分分析工具</h1>
+        <form method="post">
+            <div class="input-item">
+                <label>输入成分（中英文均可，逗号分隔）</label>
+                <textarea name="ingredients" rows="4" placeholder="示例：酒精,mineral oil,烟酰胺">{{ ingredients_input }}</textarea>
+            </div>
+            <div class="input-item">
+                <label>选择肤质</label>
+                <select name="skin_type">
+                    <option value="">请选择肤质</option>
+                    <option value="1" {% if skin_select == "1" %}selected{% endif %}>油皮</option>
+                    <option value="2" {% if skin_select == "2" %}selected{% endif %}>干皮</option>
+                    <option value="3" {% if skin_select == "3" %}selected{% endif %}>敏感肌</option>
+                </select>
+            </div>
+            <button class="submit-btn" type="submit">开始检测</button>
+        </form>
+
+        {% if result %}
+        <div class="result-area">
+            <h2>检测报告</h2>
+            <p>你选择的肤质：{{ skin_text }}</p>
+            {% for item in result %}
+            <div class="item-card">
+                <h3>{{ item.cn_name }}</h3>
+                <p>风险等级：{{ item.risk }}</p>
+                <p>成分说明：{{ item.desc }}</p>
+                {% if item.bad_for %}
+                <p class="warn">❌ 不适合肤质：{{ item.bad_for | join("、") }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
